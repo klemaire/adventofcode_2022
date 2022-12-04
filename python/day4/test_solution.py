@@ -21,8 +21,20 @@ def test_read_data():
                           ['2-8', '3-7', True],
                           ['6-6', '4-6', True],
                           ['2-6', '4-8', False]])
-def test_assignments_overlap(assign1, assign2, result):
+def test_assignments_full_overlap(assign1, assign2, result):
     assert Assignement.is_full_overlap(Assignement(assign1), Assignement(assign2)) == result
+
+@pytest.mark.parametrize('assign1, assign2, result',
+                         [['2-4', '6-8', False],
+                          ['2-3', '4-5', False],
+                          ['6-8', '2-4', False],
+                          ['4-5', '2-3', False],
+                          ['5-7', '7-9', True],
+                          ['2-8', '3-7', True],
+                          ['6-6', '4-6', True],
+                          ['2-6', '4-8', True]])
+def test_assignments_partial_overlap(assign1, assign2, result):
+    assert Assignement.is_partial_overlap(Assignement(assign1), Assignement(assign2)) == result
 
 # Global tests
 def test_test_input_file_solution1():
@@ -31,11 +43,9 @@ def test_test_input_file_solution1():
 def test_input_file_solution1():
     assert solution1(INPUT_FILE) == 498
 
-"""
 def test_test_input_file_solution2():
-    assert solution2(TEST_FILE) == 45000
+    assert solution2(TEST_FILE) == 4
 
 def test_input_file_solution2():
-    assert solution2(INPUT_FILE) == 204610
-"""
+    assert solution2(INPUT_FILE) == 859
 
