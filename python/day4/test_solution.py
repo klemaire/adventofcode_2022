@@ -22,7 +22,7 @@ def test_read_data():
                           ['6-6', '4-6', True],
                           ['2-6', '4-8', False]])
 def test_assignments_overlap(assign1, assign2, result):
-    assert Assignement.is_overlap(Assignement(assign1), Assignement(assign2)) == result
+    assert Assignement.is_full_overlap(Assignement(assign1), Assignement(assign2)) == result
 
 # Global tests
 def test_test_input_file_solution1():

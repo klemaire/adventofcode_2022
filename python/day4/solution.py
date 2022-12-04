@@ -12,7 +12,7 @@ class Assignement:
     def __init__(self, assigned_section):
         self.min, self.max = list(map(int, assigned_section.split('-')))
 
-    def is_overlap(assignement1, assignement2):
+    def is_full_overlap(assignement1, assignement2):
         if ( assignement1.min <= assignement2.min and assignement1.max >= assignement2.max
          or assignement2.min <= assignement1.min and assignement2.max >= assignement1.max):
             return True
@@ -23,11 +23,11 @@ def solution1(file):
     result = 0
 
     for assign1, assign2 in read_data(file):
-        is_overlap = Assignement.is_overlap(
+        is_full_overlap = Assignement.is_full_overlap(
             Assignement(assign1),
             Assignement(assign2)
         )
-        if is_overlap:
+        if is_full_overlap:
             result += 1
 
     return result
