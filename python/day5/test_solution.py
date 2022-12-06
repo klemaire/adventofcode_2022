@@ -3,6 +3,7 @@ from solution import (
     read_data,
     solution1,
     solution2,
+    solution2b,
     extract_actions,
     extract_stacks,
     TEST_FILE,
@@ -73,3 +74,11 @@ def test_test_input_file_solution2():
 
 def test_input_file_solution2():
     assert solution2(INPUT_FILE) == "NLCDCLVMQ"
+
+
+def test_test_input_file_solution2b():
+    assert solution2b(TEST_FILE) == "MCD"
+
+
+def test_input_file_solution2b():
+    assert solution2b(INPUT_FILE) == "NLCDCLVMQ"

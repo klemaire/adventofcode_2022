@@ -66,9 +66,21 @@ def solution2(file):
     return "".join([v[-1] for k, v in stacks.items()])
 
 
+def solution2b(file):
+    stacks_string, actions_string = read_data(file)
+    stacks = extract_stacks(stacks_string)
+    actions = extract_actions(actions_string)
+    for action in actions:
+        cnt = action["cnt"]
+        keep, move = stacks[action["from"]][:-cnt], stacks[action["from"]][-cnt:]
+        stacks[action["from"]] = keep
+        stacks[action["to"]] += move
+    return "".join([v[-1] for k, v in stacks.items()])
+
+
 if __name__ == "__main__":
     print("test = ", solution1(TEST_FILE))
     print("test_input = ", solution1(INPUT_FILE))
 
-    print("test = ", solution2(TEST_FILE))
+    print("test = ", solution2b(TEST_FILE))
     print("test_input = ", solution2(INPUT_FILE))
